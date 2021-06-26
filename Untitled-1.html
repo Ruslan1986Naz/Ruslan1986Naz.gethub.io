@@ -1,0 +1,81 @@
+<p><span style='font-size:16.0pt'><a>Билеты на 5 группу</a></span>
+<span style='font-size:12.0pt;margin-left: 55%'>
+<a href="#Имя предыдущего файла#">На предыдущую</a></span></p>
+<script type="text/javascript">
+// Подзаголовок (h2)
+var subtitle = "Билет №1";
+// Это ваши вопросы
+var questions=[
+{
+	text: "Кто может назначаться допускающим при выполнении работ в электроустановках напряжением выше 1000В?:",
+	answers: ["А. Допускающие должны назначаться из числа ремонтного персонала, за исключением допуска на КЛ, ВЛ, и КВЛ при соблюдении условий, перечисленных в пункте 5.13 Правил и иметь V группу по электробезопасности",
+		  "Б.Допускающие должны назначаться из числа оперативного персонала, за исключением допуска на КЛ, ВЛ, и КВЛ при соблюдении условий, перечисленных в пункте 5.13 Правил и иметь V группу по электробезопасности",
+		  "В.Допускающие должны назначаться из числа ремонтного персонала, за исключением допуска на КЛ, ВЛ, и КВЛ при соблюдении условий, перечисленных в пункте 5.13 Правил и иметь IV группу по электробезопасности",
+		  "Г.Допускающие должны назначаться из числа ремонтного персонала, за исключением допуска на КЛ, ВЛ, и КВЛ при соблюдении условий, перечисленных в пункте 5.13 Правил и иметь III группу по электробезопасности"],
+	correctAnswer: 2 // нумерация ответов с нуля!
+
+}
+];
+
+var yourAns = new Array;
+var score = 0;
+
+function Engine(question, answer) {yourAns[question]=answer;}
+
+function Score(){
+   var answerText = "Результаты:\n";
+   for(var i = 0; i < yourAns.length; ++i){
+	var num = i+1;
+	answerText=answerText+"\n    Вопрос №"+ num +"";
+	if(yourAns[i]!=questions[i].correctAnswer){
+	    answerText=answerText+"\n    Правильный ответ: " +
+		questions[i].answers[questions[i].correctAnswer] + "\n";
+	  }
+        else{
+	    answerText=answerText+": Верно! \n";
+	    ++score;
+	    }
+       }
+
+   answerText=answerText+"\nВсего правильных ответов: "+score+"\n";
+
+   alert(answerText);
+   yourAns = [];
+   score = 0;
+   clearForm("quiz");
+}
+function clearForm(name) {
+   var f = document.forms[name];
+   for(var i = 0; i < f.elements.length; ++i) {
+	if(f.elements[i].checked)
+		f.elements[i].checked = false;
+}
+}
+</script>
+
+<style>
+span.quest {font-weight: bold;}
+</style>
+
+<h1><script>document.write(title)</script></h1>
+<h2><script>document.write(subtitle)</script></h2>
+
+<form name="quiz">
+<ol>
+<script>
+for(var q=0; q<questions.length; ++q) {
+   var question = questions[q];
+   var idx = 1 + q;
+
+   document.writeln('<li><span class="quest">' + question.text + '</span><br/>');
+   for(var i in question.answers) {
+	document.writeln('<input type=radio name="q' + idx + '" value="' + i +
+	'" onClick="Engine(' + q + ', this.value)">' + question.answers[i] + '<br/>');
+}
+}
+</script>
+</ol>
+<input type="button" onClick="Score()" value="Проверить результаты" />
+
+</form>
+<p><span style='font-size:12.0pt'><a href="C:\Users\Инженер ГТЭС Повх\Desktop\Инженер\.Назмиев Р.И\Web-projects\Untitled-2.html">На следующую</a></span></p>
